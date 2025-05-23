@@ -12,17 +12,6 @@ import React,{useState,useEffect} from 'react'
 export const getStaticProps:GetStaticProps = async ()=>{
   const repo = new CountryCollection();
   const countries = await repo.getAll(); 
- /*  const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca2,cca3,capital,continents,currencies,languages,population,independent,car,area");
-  const data = await response.json(); */
-/*   const countries = data.map((c:any)=>{
-    return {
-      id:c.cca3,
-      name: c.name.common,
-      flag: c.flags.svg,
-      continent: c.continents?.[0] ?? 'Unknown',
-    }
-  }) */
-
   return {
     props:{initialCountries:countries}
   }
