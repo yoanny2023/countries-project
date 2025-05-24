@@ -27,20 +27,48 @@ function Login() {
 
   const onFormSubmit: SubmitHandler<formFields> = async (data)=>{
     try {
-        await new Promise((resolve) => setTimeout(resolve,1000))
-        //throw new Error();
-        reset();
-        console.log("dados",data);
-        toast.success("Successfully logged in");
-        toast.success("Redirecting to flag page");
-        router.push("/flags/flag");
+        const resp = await fetch("http://localhost:4000/login",{
+          method:"POST",
+          headers:{
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify({
+             email: data.email,
+             password: data.password
+          })
+        })
+         if(resp.status === 200){
+          const responseData = await resp.json();
+          const token = responseData.token;
 
+          localStorage.setItem("token", token);
+          
+          console.log("dados",token);
+
+          toast.success("Successfully logged in");
+          toast.info("Redirecting to flag page...");
+          router.push("/flags/flag");
+          reset();
+         }else if(resp.status === 204 || resp.status === 401){
+          toast.error("Invalid email or password");
+          setError("root",{
+          message: "one of the fields is incorrect!"
+          })
+         }else if(resp.status === 404){
+          toast.error("User not found!");
+          setError("root", {
+            message: "User not found!"
+          });
+        }
+         else {
+          throw new Error("Unexpected error");
+        }
     } catch (error) {
+      console.log("Login Error",error)
       setError("root",{
-        message: "one of the fields is incorrect!"
-      })
+        message: "Network error or server is unavailable."
+      });
     }
-
   }
  
   return (    

@@ -21,23 +21,39 @@ function signUp() {
     handleSubmit,
     setError,
     reset,
-    formState:{errors,isSubmitting,isLoading}
+    formState:{errors,isSubmitting}
   } = useForm<formFields>({
     resolver: zodResolver(formSchema)
   });
 
     const onFormSubmit:SubmitHandler<formFields> = async (data) => {
       try {
-          await new Promise(resolve => setTimeout(resolve,1000));
+          const res = await fetch("http://localhost:4000/register",{
+            method:"POST",
+            headers:{
+             "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+        })
+        });
+          
+        if(res.ok){
           console.log(data);
           reset();
           toast.success("Registered successfully!");
-          toast.success("Redirecting to Login page");
+          toast.info("Redirecting to Login page");
           router.push("/");
-          
+        }else if(res.status === 409){
+          toast.error("User already exists!");
+        } else {
+         toast.error("Something went wrong. Try again.");
+        }
       } catch (error) {
         setError("root",{
-          message:"Check the fields input!"
+          message:"Network error. Please try again later."
         })
       }
   }
