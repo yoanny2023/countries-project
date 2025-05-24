@@ -1,5 +1,3 @@
-import ID from "../shared/Id";
-
 export default class Country{
   id:string
   name:string
