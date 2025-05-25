@@ -66,7 +66,7 @@ function signUp() {
              border border-white/10 bg-zinc-800/30 backdrop-blur-md shadow-lg rounded-2xl
              px-16 py-6' >  
              <Image src={logo} width={104} height={90} alt='Logo image'
-             className="w-24 h-auto"
+             className="w-24 h-auto" style={{height:"auto"}}
              />
              <h2 className='text-3xl font-semibold 
                bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>

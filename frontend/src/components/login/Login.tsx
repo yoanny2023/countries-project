@@ -11,9 +11,11 @@ import { formSchema,formFields } from './schema/formSignInSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {toast} from "react-toastify"
 import { useRouter } from 'next/router'
+import CountryCollection from '@/core/CountryCollection'
 
 function Login() {
   const router = useRouter();
+  const repo = new CountryCollection();
 
   const {register,
     handleSubmit,
@@ -36,14 +38,15 @@ function Login() {
              email: data.email,
              password: data.password
           })
-        })
+        });
+
          if(resp.status === 200){
           const responseData = await resp.json();
           const token = responseData.token;
 
           localStorage.setItem("token", token);
-          
-          console.log("dados",token);
+
+          //console.log("dados",token);
 
           toast.success("Successfully logged in");
           toast.info("Redirecting to flag page...");
@@ -78,6 +81,7 @@ function Login() {
         border border-white/10 bg-zinc-800/30 backdrop-blur-md shadow-lg rounded-2xl
         px-12 py-6' >  
         <Image src={logo} width={104} height={90} alt='Logo image' priority
+        style={{height:"auto"}}
         />
         <h2 className='text-3xl font-semibold text-center
           bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>

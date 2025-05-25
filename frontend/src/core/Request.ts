@@ -1,31 +1,61 @@
-//make request to backend
-export default class Request {
+import { toast } from "react-toastify";
+import Router from "next/router";  
 
-static headers: any = {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",  // enable cors from different origin.
-};
+//from frontend make request to the backend
+export default class Request {
 
 static port = 4000;
 static baseUrl = `http://localhost:${this.port}`;
+
+static getHeaders():HeadersInit{
+
+  const token = localStorage.getItem("token");
+
+  const headers: HeadersInit = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",  // enable cors from different origin.
+    };
+
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+
+    return headers;
+}
 
 static async generalRerest(method:string,urlComplement:string,bodyData?:any){
   try {
       const response = await fetch(`${this.baseUrl}${urlComplement}`,{
       method:method,
-      headers:Request.headers,
+      headers:this.getHeaders(),
       body:JSON.stringify(bodyData)
     });
+    
+     if (response.status === 401) {
+        console.warn("Unauthorized request");
+          toast.error("Session expired. Please log in again.");
+          localStorage.removeItem("token");
+          Router.push("/"); 
+          return;
+          
+      }
 
-    const result = await response.json();
+    const result = response.status !== 204 ? await response.json() : null;
     return result
   } catch (error) {
-    return error;
+    toast.error("Server error or network issue");
+    return { error: true, message: "Network/server error" };
   }
 }
 
 static async get(urlComplement:string){
   const result = await Request.generalRerest("GET",urlComplement);
+  return result;
+}
+
+//added for later.
+static async post(urlComplement:string,bodyData:any){
+  const result = await Request.generalRerest("POST",urlComplement,bodyData);
   return result;
 }
 }

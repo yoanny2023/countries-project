@@ -6,12 +6,20 @@ import useCountry from '@/hooks/useCountry';
 import { GetStaticProps } from 'next';
 import Image from 'next/image'; 
 import Link from 'next/link';
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 
 
 export const getStaticProps:GetStaticProps = async ()=>{
   const repo = new CountryCollection();
   const countries = await repo.getAll(); 
+  if (countries.error) {
+  // Return empty data or redirect as needed
+  return {
+    props: {
+      initialCountries: []
+    },
+  };
+}
   return {
     props:{initialCountries:countries}
   }
