@@ -30,30 +30,3 @@ export default class Country{
     this.currency = currency
   }
 }
-
-/* constructor(name:string,flag:string,alt:string, independent?:boolean,
-  language?:string[], currency?:string[], population?:number,
-  capital?:string, area?:string , car_side?:string,
-  continent?:string ){
-    this.id = ID.newId();  
-    this.name = name;
-    this.flag = flag;
-    this.alt = alt;
-    this.independent = independent;
-    this.language = language;
-    this.currency = currency;
-    this.population = population;
-    this.capital = capital;
-    this.area = area;
-    this.car_side = car_side;
-    this.continent = continent 
-  } */
- 
-  /*   this.independent = independent;
-    this.language = language;
-    this.currency = currency;
-    this.population = population;
-    this.capital = capital;
-    this.area = area;
-    this.car_side = car_side;
-    this.continent = continent */
