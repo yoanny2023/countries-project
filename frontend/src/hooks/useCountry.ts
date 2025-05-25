@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 export default function useCountry(initialData: any[] = []){
   const repo = new CountryCollection();
-  const [countries, setCountries] = useState<any[]>(initialData);
-  const[isLoading,setIsLoading] = useState(initialData.length === 0);
+  const [countries, setCountries] = useState<any[]>(initialData ?? []);
+  const[isLoading,setIsLoading] = useState(initialData?.length === 0);
   const [search, setSearch] = useState('')
   const [filterContinent, setFilterContinent] = useState('All')
   

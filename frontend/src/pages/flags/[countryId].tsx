@@ -1,4 +1,5 @@
 import Country from '@/components/Country';
+import useAuthRedirect from '@/hooks/useAuthRedirect';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react'
 
@@ -54,6 +55,7 @@ export const getStaticProps:GetStaticProps = async (context) => {
 }
 
 function countryId({ country }: { country: any }) {
+  useAuthRedirect();
   return (
     <div className='text-4xl font-semibold'>
       <Country country={country} />

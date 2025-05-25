@@ -38,7 +38,10 @@ function Country({ country }: CountryProps) {
           </span>
           <span>Population: {country.population}</span>
           <span>Area: {country.area}</span>
-          <Button text='Back' onClick={goBackButton} />
+          <Button text='Back' onClick={goBackButton}
+          className='bg-teal-500 hover:bg-teal-600 
+          border border-teal-700'
+          />
         </div>
         <div className='flex flex-col gap-3 justify-center items-center 
         bg-zinc-900 shadow-lg rounded-lg shadow-teal-500/40 p-3

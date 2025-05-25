@@ -79,10 +79,19 @@ function Login() {
       <form onSubmit={handleSubmit(onFormSubmit)}
         className='flex flex-col gap-3 justify-center items-center
         border border-white/10 bg-zinc-800/30 backdrop-blur-md shadow-lg rounded-2xl
-        px-12 py-6' >  
-        <Image src={logo} width={104} height={90} alt='Logo image' priority
-        style={{height:"auto"}}
-        />
+        px-12 py-6'> 
+        
+        <div className="relative w-[104px] aspect-[104/90]">
+          <Image
+            src={logo}
+            alt="Logo image"
+            fill
+            className="object-contain"
+            priority
+            sizes="104px"
+          />
+        </div>
+    
         <h2 className='text-3xl font-semibold text-center
           bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>
           Login to your account
@@ -100,7 +109,8 @@ function Login() {
         <Button 
           type='submit' 
           text='Login' 
-          className='w-full'
+          className='bg-teal-500 hover:bg-teal-600 
+          border border-teal-600 w-full'
           isSubmitting ={isSubmitting}
           isLoading={isLoading}
         />
