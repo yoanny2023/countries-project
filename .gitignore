@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# add .env to backend folder in gitignote.
+backend/.env
+
 # vercel
 .vercel
 
