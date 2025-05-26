@@ -10,12 +10,18 @@
 !.yarn/releases
 !.yarn/versions
 
+# Ignore node_modules anywhere in the project
+**/node_modules/
+
 # testing
 /coverage
 
 # next.js
 /.next/
 /out/
+
+# Ignore .next build folder anywhere
+**/.next/
 
 # production
 /build
@@ -35,6 +41,10 @@ yarn-error.log*
 
 # add .env to backend folder in gitignote.
 backend/.env
+
+# Ignore environment files
+*.env
+**/*.env
 
 # vercel
 .vercel
