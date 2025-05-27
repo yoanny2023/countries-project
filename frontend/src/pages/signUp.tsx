@@ -60,15 +60,22 @@ function signUp() {
 
   return (
     <Pagina>
-     <div className="w-5/12">
+     <div className="w-[90%] my-4 xs_w sm:w-2/3 md:w-[60%] lg:w-1/2 xl:w-[45%]">
            <form onSubmit={handleSubmit(onFormSubmit)}
             className='flex flex-col gap-2 justify-center items-center
              border border-white/10 bg-zinc-800/30 backdrop-blur-md shadow-lg rounded-2xl
-             px-16 py-6' >  
-             <Image src={logo} width={104} height={90} alt='Logo image'
-             className="w-24 h-auto" style={{height:"auto"}}
-             />
-             <h2 className='text-3xl font-semibold 
+              px-4 padd_x3 sm:px-16 md:px-16 lg:px-20 py-2 sm:py-4 xl:py-2' >  
+            <div className="relative w-[104px] aspect-[104/70]">
+              <Image
+                src={logo}
+                alt="Logo image"
+                fill
+                className="object-contain"
+                priority
+                sizes="104px"
+              />
+            </div>
+              <h2 className='text-xl h_xsm sm:text-2xl lg:text-[32px] font-semibold 
                bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>
                Create an account  
              </h2>
@@ -83,7 +90,8 @@ function signUp() {
              <Input {...register("confirmPassword")} type='password' placeholder='confirm password' label="Confirm password"
              Icon={IconLockPassword} error={errors.confirmPassword?.message}
              />
-             <Button type='submit' text='Register' className='w-full'
+             <Button type='submit' text='Register' className='bg-teal-500 hover:bg-teal-700 
+              border border-teal-600 w-full'
              isSubmitting={isSubmitting}
              />
              {errors.root && (<div className='self-start text-sm text-red-500'>
@@ -95,7 +103,7 @@ function signUp() {
                  <span className="font-semibold text-sm text-zinc-500 mt-2">OR</span>
                  <div className="w-full border-t border-zinc-500" />
                </div>
-               <p className="text-sm text-center text-zinc-400 font-semibold tracking-wide
+               <p className="text-xs sm:text-sm text-center text-zinc-400 font-semibold tracking-wide
                    ">Already have an account? {" "}
                      <Link
                        href={"/"}

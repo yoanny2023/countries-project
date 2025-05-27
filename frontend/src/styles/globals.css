@@ -42,3 +42,47 @@ body {
     --foreground: #ededed;
   }
 }
+
+/* @media(min-width:320px){
+.xsmall{
+  @apply text-4xl;
+} 
+} */
+
+/* @media(min-width:363px){
+.xsmall{
+  @apply text-3xl;
+} 
+} */
+@media(min-width:437px){
+.xs_w{
+  @apply w-4/5;
+}
+.h_xsm{
+  @apply text-3xl;
+}
+.padd_x{
+  @apply px-12;
+} 
+}
+@media(min-width:485px){
+.padd_x2{
+  @apply px-14;
+} 
+.padd_x3{
+  @apply px-16;
+} 
+}
+/* @media(min-width:472px){
+.padd_x2{
+  @apply px-12;
+} 
+}
+@media(min-width:490px){
+.padd_x3{
+  @apply px-16;
+} 
+.h_xsm{
+  @apply text-4xl;
+} 
+} */

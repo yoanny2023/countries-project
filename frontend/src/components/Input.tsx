@@ -22,12 +22,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props,ref) => {
       <div className="flex justify-between items-center">
         <label className='text-zinc-400 text-sm' htmlFor={label}>{label}</label>
           {error && (
-            <div className='self-start text-sm text-red-500'>{error}</div>)
+            <div className='self-start text-xs text-red-500'>{error}</div>)
           }
       </div>
       
       <div className="flex gap-2 justify-center items-center
-       bg-zinc-700 px-4 py-2 text-white rounded-md  
+       bg-zinc-700 px-2 py-1 text-white rounded-md  
          focus-within:border focus-within:border-teal-600 focus-within:bg-zinc-800/90">
         <input
          type={showPassword ? "text" :type} 

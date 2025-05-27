@@ -7,7 +7,7 @@ interface PaginaProps{
 function Pagina(props:PaginaProps) {
   return (
     <div className={`flex flex-col justify-center items-center p-4 
-      bg-gradient-to-b from-black via-teal-700/50 to-black min-h-screen text-white 
+      bg-gradient-to-b from-zinc-900 via-teal-700/40 to-zinc-950 min-h-screen text-white 
     `}>
       {props.children} 
     </div>

@@ -41,16 +41,10 @@ function paginaFlag({initialCountries}:{initialCountries:any[]}) {
     return (filteredCountries?.map((country) => {
       return (
         <li key={country.id} className='flex flex-col gap-2 justify-center items-center
-          bg-zinc-900 border border-teal-600 shadow-lg rounded-xl p-4
-          transition-transform duration-500 hover:bg-black/40 hover:scale-[1.02] hover:shadow-teal-500/40
+          bg-black/10 border border-teal-800 shadow-lg shadow-teal-800/10 hover:shadow-teal-500/40 rounded-xl p-4
+          transition-all duration-500 hover:scale-[1.02] hover:border-teal-400 hover:bg-teal-700/10
           '>
           <Link href={`/flags/${country.id}`} className='flex flex-col justify-center items-center cursor-pointer'>
-         {/*  <Image 
-          src={country.flag} 
-          width={100} height={50}   
-          alt={`${country.name} flag`}
-          priority style={{ height: 'auto',width: '100px' }}
-          /> */}
           <div className="relative w-[100px] aspect-[100/50]">
             <Image
               src={country.flag}
