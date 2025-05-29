@@ -13,7 +13,7 @@ export default function useCountry(initialData: any[] = []){
     if (initialData.length === 0) {
       fetchData()
     }
-  }, []);
+  }, [fetchData, initialData.length]);
   
   async function fetchData() {
     try {

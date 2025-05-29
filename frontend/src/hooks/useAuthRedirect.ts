@@ -10,5 +10,5 @@ export default function useAuthRedirect(){
     toast.error("Unauthorized, please login!");
     router.push("/")
   }
-  },[])
+  },[router])
 }

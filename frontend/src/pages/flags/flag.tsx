@@ -1,5 +1,5 @@
-"use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client"
 import Logout from '@/components/Logout';
 import Pagina from '@/components/Pagina'
 import Spinner from '@/components/Spinner';

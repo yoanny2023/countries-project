@@ -117,7 +117,7 @@ function Login() {
             <div className="w-full border-t border-zinc-500" />
           </div>
           <p className="text-sm text-center text-zinc-400 font-semibold tracking-wide">
-             Don't have an account yet?
+             Don&apos;t have an account yet?
                 <Link
                   href={"/signUp"}
                   className="
