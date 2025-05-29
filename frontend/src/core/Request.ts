@@ -6,7 +6,7 @@ import Router from "next/router";
 export default class Request {
 
 static port = 4000;
-static baseUrl = `http://localhost:${this.port}`;
+static baseUrl = process.env.NEXT_PUBLIC_API_URL || `http://localhost:${this.port}`;
 
 static getHeaders():HeadersInit{
 
