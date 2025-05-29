@@ -9,7 +9,7 @@ function Logout() {
   }
 
   return (
-   <Button text='Logout' className='bg-red-500 hover:bg-red-600' onClick={handleLogut} />
+   <Button text='Logout' className='bg-red-600 hover:bg-red-700' onClick={handleLogut} />
   )
 }
 

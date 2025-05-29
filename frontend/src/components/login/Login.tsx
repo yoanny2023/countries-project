@@ -57,12 +57,7 @@ function Login() {
           setError("root",{
           message: "one of the fields is incorrect!"
           })
-         }else if(resp.status === 404){
-          toast.error("User not found!");
-          setError("root", {
-            message: "User not found!"
-          });
-        }
+         }
          else {
           throw new Error("Unexpected error");
         }

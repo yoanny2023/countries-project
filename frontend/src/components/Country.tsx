@@ -18,15 +18,16 @@ function Country({ country }: CountryProps) {
          ? Object.values(country.currencies).map((c: any) => `${c.name} (${c.symbol})`): [];
   
   const router = useRouter();
+
   function goBackButton(){
     router.back();
   }
 
   return (
     <Pagina >
-      <h1 className='mb-5 bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>Country: {country.name.common}</h1>
-      <div className='grid grid-cols-3 gap-3 flex-1 mx-11'>
-        <div className='self-start flex flex-col gap-2 text-lg
+      <h1 className='mb-3 sm:mb-5 text-xl sm:text-3xl bg-gradient-to-b from-white to-teal-500 text-transparent bg-clip-text'>Country: {country.name.common}</h1>
+      <div className='flex flex-col justify-center items-center gap-2 sm:grid sm:grid-cols-3 sm:gap-3 flex-1 mx-3 sm:mx-11'>
+        <div className='self-start flex flex-col gap-2 text-sm md:text-lg w-full
          mt-7 text-zinc-400 p-5 rounded-lg bg-zinc-900 
          border border-teal-600 shadow-lg shadow-teal-500/40
         transition-transform duration-500 hover:scale-[1.02] hover:bg-black/60
@@ -43,7 +44,7 @@ function Country({ country }: CountryProps) {
           border border-teal-700'
           />
         </div>
-        <div className='flex flex-col gap-3 justify-center items-center 
+        <div className='self-center flex flex-col gap-3 justify-center items-center 
         bg-zinc-900 shadow-lg rounded-lg shadow-teal-500/40 p-3
         border border-teal-600 transition-transform duration-500 
         hover:scale-[1.02] hover:bg-black/60'>
@@ -52,8 +53,8 @@ function Country({ country }: CountryProps) {
           style={{height:"auto"}} />
           <span className='text-2xl text-zinc-400'>{country.name.common}</span>
         </div>
-        <div className='self-end flex flex-col gap-2
-         text-lg mb-7 text-zinc-400 p-5 rounded-lg shadow-lg shadow-teal-500/40
+        <div className='self-start sm:self-end flex flex-col gap-2 text-sm md:text-lg w-full mb-7 
+        text-zinc-400 p-5 rounded-lg shadow-lg shadow-teal-500/40
          bg-zinc-900 border border-teal-600
          transition-transform duration-500 hover:scale-[1.02] hover:bg-black/60 
          -rotate-12 hover:rotate-0 
