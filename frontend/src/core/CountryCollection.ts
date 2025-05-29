@@ -9,10 +9,12 @@ export default class CountryCollection {
   }
 
   static logoutHandler(){
+      if (typeof window !== "undefined") {
     localStorage.removeItem("token");
     toast.success("Logged out successfully");
     toast.info("Redirecting to login...");
     Router.push("/");
+  }
   }
 
   // added now to make login request to backend later

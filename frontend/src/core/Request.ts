@@ -10,16 +10,17 @@ static baseUrl = process.env.NEXT_PUBLIC_API_URL || `http://localhost:${this.por
 
 static getHeaders():HeadersInit{
 
-  const token = localStorage.getItem("token");
-
   const headers: HeadersInit = {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",  // enable cors from different origin.
     };
 
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
     if (token) {
-      headers["Authorization"] = `Bearer ${token}`;
+        headers["Authorization"] = `Bearer ${token}`;
     }
+  }
 
     return headers;
 }
@@ -32,20 +33,21 @@ static async generalRerest(method:string,urlComplement:string,bodyData?:any){
       body:JSON.stringify(bodyData)
     });
     
-     if (response.status === 401) {
+     if (response.status === 401 && typeof window !== "undefined") {
         console.warn("Unauthorized request");
           toast.error("Session expired. Please log in again.");
           localStorage.removeItem("token");
           Router.push("/"); 
-          return;
-          
+          return; 
       }
 
     const result = response.status !== 204 ? await response.json() : null;
     return result
   } catch(error) {
-    console.error(error);
-    toast.error("Server error or network issue");
+      if (typeof window !== "undefined") {
+        console.error(error);
+        toast.error("Server error or network issue");
+      }
     return { error: true, message: "Network/server error" };
   }
 }
