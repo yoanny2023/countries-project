@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toast } from "react-toastify";
 import Router from "next/router";  
 

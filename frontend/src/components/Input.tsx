@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React,{InputHTMLAttributes, forwardRef, useState }  from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{

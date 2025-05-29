@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Country from '@/components/Country';
 import useAuthRedirect from '@/hooks/useAuthRedirect';
 import { GetStaticPaths, GetStaticProps } from 'next';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CountryCollection from "@/core/CountryCollection";
 import { useEffect, useState } from "react";
 
