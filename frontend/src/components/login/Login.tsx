@@ -15,7 +15,7 @@ import CountryCollection from '@/core/CountryCollection'
 
 function Login() {
   const router = useRouter();
-  const repo = new CountryCollection();
+  /* const repo = new CountryCollection(); */
 
   const {register,
     handleSubmit,
@@ -119,7 +119,7 @@ function Login() {
             <div className="w-full border-t border-zinc-500" />
           </div>
           <p className="text-sm text-center text-zinc-400 font-semibold tracking-wide
-              ">Don't have an account yet? {" "}
+              ">Don't have an account yet?
                 <Link
                   href={"/signUp"}
                   className="
@@ -127,7 +127,7 @@ function Login() {
                     cursor-pointer
                     hover:underline
                   "
-                >Register here</Link>
+                > Register here</Link>
             </p>
     </div>
   )

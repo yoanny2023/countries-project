@@ -55,7 +55,7 @@ export const getStaticProps:GetStaticProps = async (context) => {
   }
 }
 
-function countryId({ country }: { country: any }) {
+function CountryId({ country }: { country: any }) {
   useAuthRedirect();
   return (
     <div className='text-4xl font-semibold'>
@@ -64,4 +64,4 @@ function countryId({ country }: { country: any }) {
   )
 }
 
-export default countryId
+export default CountryId

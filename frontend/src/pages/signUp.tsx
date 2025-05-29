@@ -13,7 +13,7 @@ import React from 'react'
 import {useForm,SubmitHandler} from "react-hook-form"
 import {toast} from "react-toastify"
 
-function signUp() {
+function SignUp() {
   const router = useRouter();
 
   const{
@@ -52,6 +52,7 @@ function signUp() {
          toast.error("Something went wrong. Try again.");
         }
       } catch (error) {
+        console.error(error);
         setError("root",{
           message:"Network error. Please try again later."
         })
@@ -120,4 +121,4 @@ function signUp() {
   )
 }
 
-export default signUp
+export default SignUp

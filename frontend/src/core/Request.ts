@@ -43,7 +43,8 @@ static async generalRerest(method:string,urlComplement:string,bodyData?:any){
 
     const result = response.status !== 204 ? await response.json() : null;
     return result
-  } catch (error) {
+  } catch(error) {
+    console.error(error);
     toast.error("Server error or network issue");
     return { error: true, message: "Network/server error" };
   }
