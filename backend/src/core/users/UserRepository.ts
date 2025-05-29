@@ -1,14 +1,20 @@
 import Senha from "../shared/Senha";
 import User from "./User";
 import fs from "fs/promises";
+import { existsSync,copyFileSync } from "fs";
 import path from "path";
 
 export default class UserRepository{ 
-  private filePath = path.join(__dirname,"users.json");
+  private usersPath = path.join(__dirname,"users.json");
+  private samplePath = path.join(__dirname, "users.sample.json");
 
   private async loadUsers():Promise<User[]>{
     try {
-      const data = await fs.readFile(this.filePath,"utf-8");
+      if (!existsSync(this.usersPath)) {
+        console.warn("users.json not found. Creating from sample...");
+        copyFileSync(this.samplePath, this.usersPath);
+      }
+      const data = await fs.readFile(this.usersPath,"utf-8");
       return JSON.parse(data);
     } catch (error) {
       return [];
@@ -16,7 +22,7 @@ export default class UserRepository{
   }
 
   private async saveUsers(users:User[]):Promise<void>{
-    await fs.writeFile(this.filePath, JSON.stringify(users,null,2))
+    await fs.writeFile(this.usersPath, JSON.stringify(users,null,2))
   }
 
   async registerUser(name:string,email:string,plainPassword:string):Promise<boolean>{
