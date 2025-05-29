@@ -56,3 +56,7 @@ backend/src/core/users/users.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dont track .env/local
+frontend/.env.local
+
