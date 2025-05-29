@@ -4,11 +4,5 @@
     "name": "john_doe",
     "email": "john@example.com",
     "password": "$2b$10$fakehashedpassword1"
-  },
-  {
-    "id": "sample-id-2",
-    "name": "jane_doe",
-    "email": "jane@example.com",
-    "password": "$2b$10$fakehashedpassword2"
   }
 ]
