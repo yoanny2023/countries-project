@@ -11,21 +11,21 @@ router.post("/",async (req:Request,res:Response) => {
   try {
     const user = await repo.findUserByEmail(email);
 
-    if(!user) {
-      console.log("User not registered yet")
-      res.status(404).json({ error: "User not found" });
-      return;
-    }
-
-    const isCorrect = await repo.loginIsCorrect(email,password);
+    const isCorrect = user && await repo.loginIsCorrect(email,password);
     if(!isCorrect){
       console.log("Invalid credentials")
       res.status(401).json({ error: "Invalid credentials" });
       return;
     }
 
-    const token = Jwt.sign(
+/*     const token = Jwt.sign(
       {email},
+      process.env.ACCESS_TOKEN_SECRET as string,
+      { expiresIn: "1h" }
+    ); */
+    const userId = user?.id;
+    const token = Jwt.sign(
+      {id:userId},
       process.env.ACCESS_TOKEN_SECRET as string,
       { expiresIn: "1h" }
     );
