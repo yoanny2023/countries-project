@@ -36,11 +36,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props,ref) => {
          placeholder={placeholder} 
          ref={ref}
          {...rest}
-         className={`flex-1 focus:outline-none bg-transparent
+         className={`flex-1 text-sm focus:outline-none bg-transparent
          ${className ?? ""}`}
       />
       {Icon && (
-        <Icon className="text-teal-500" size={18} stroke={1}
+        <Icon className="text-teal-500" stroke={1} size={18}
         onClick={handleShowPassword}          
       />)}
       </div>
