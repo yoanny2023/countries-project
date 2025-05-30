@@ -27,7 +27,8 @@ function Login() {
 
   const onFormSubmit: SubmitHandler<formFields> = async (data)=>{
     try {
-        const resp = await fetch("http://localhost:4000/login",{
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+        const resp = await fetch(`${baseUrl}/login`,{
           method:"POST",
           headers:{
             "Content-Type": "application/json",
