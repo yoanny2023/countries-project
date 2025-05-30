@@ -28,7 +28,8 @@ function SignUp() {
 
     const onFormSubmit:SubmitHandler<formFields> = async (data) => {
       try {
-          const res = await fetch("http://localhost:4000/register",{
+          const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+          const res = await fetch(`${baseUrl}/register`,{
             method:"POST",
             headers:{
              "Content-Type": "application/json",
