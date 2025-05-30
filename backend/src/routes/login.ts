@@ -17,19 +17,20 @@ router.post("/",async (req:Request,res:Response) => {
       res.status(401).json({ error: "Invalid credentials" });
       return;
     }
+    
+    const secret = process.env.ACCESS_TOKEN_SECRET;
 
-/*     const token = Jwt.sign(
-      {email},
-      process.env.ACCESS_TOKEN_SECRET as string,
-      { expiresIn: "1h" }
-    ); */
+    if (!secret) {
+      console.error("ACCESS_TOKEN_SECRET is not defined in environment!");
+      res.status(500).json({ error: "Server misconfiguration" });
+      return;
+    }
+
     const userId = user?.id;
     const token = Jwt.sign(
-      {id:userId},
-      process.env.ACCESS_TOKEN_SECRET as string,
-      { expiresIn: "1h" }
+      {id:userId},secret as string,{ expiresIn: "1h" }
     );
-  //console.log("SECRET USED:", process.env.ACCESS_TOKEN_SECRET);
+ 
    res.status(200).json({token});
    return;
 
