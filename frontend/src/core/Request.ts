@@ -2,13 +2,14 @@
 import { toast } from "react-toastify";
 import Router from "next/router";  
 
-//from frontend make request to the backend
+//from frontend make request to the backend  
 export default class Request {
 
 static port = 4000;
 static baseUrl = process.env.NEXT_PUBLIC_API_URL || `http://localhost:${this.port}`;
+//static baseUrl =`http://localhost:${this.port}`; 
 
-static getHeaders():HeadersInit{
+static getHeaders():HeadersInit{  
 
   const headers: HeadersInit = {
         "Content-Type": "application/json",
@@ -27,11 +28,17 @@ static getHeaders():HeadersInit{
 
 static async generalRerest(method:string,urlComplement:string,bodyData?:any){
   try {
-      const response = await fetch(`${this.baseUrl}${urlComplement}`,{
-      method:method,
-      headers:this.getHeaders(),
-      body:JSON.stringify(bodyData)
-    });
+       const options: RequestInit = {
+      method,
+      headers: this.getHeaders(),
+    };
+
+    // ✅ Only include body for POST/PUT/PATCH
+    if (bodyData && method !== "GET") {
+      options.body = JSON.stringify(bodyData);
+    }
+
+      const response = await fetch(`${this.baseUrl}${urlComplement}`,options);
     
      if (response.status === 401 && typeof window !== "undefined") {
         console.warn("Unauthorized request");

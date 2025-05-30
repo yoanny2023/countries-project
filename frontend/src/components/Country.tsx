@@ -12,6 +12,11 @@ interface CountryProps{
 
 function Country({ country }: CountryProps) {
  console.log("country:",country);
+
+  const capital = Array.isArray(country.capital) && country.capital.length > 0
+  ? country.capital[0]
+  : "No official capital";
+
   const languageArray:string[] = country.languages ? Object.values(country.languages) : [];
   const formattedLanguage = languageArray.join(",");
 
@@ -34,7 +39,7 @@ function Country({ country }: CountryProps) {
         transition-transform duration-500 hover:scale-[1.02] hover:bg-black/60
         rotate-12 hover:rotate-0 
         '>
-          <span>Capital: {country.capital[0]}</span>
+          <span>Capital: {capital}</span>
           <span className='text-green-500 break-words whitespace-normal w-full'>
             <strong className="text-zinc-400">Language:</strong> {formattedLanguage}
           </span>
