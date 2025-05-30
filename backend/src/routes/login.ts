@@ -29,7 +29,7 @@ router.post("/",async (req:Request,res:Response) => {
       process.env.ACCESS_TOKEN_SECRET as string,
       { expiresIn: "1h" }
     );
-
+  //console.log("SECRET USED:", process.env.ACCESS_TOKEN_SECRET);
    res.status(200).json({token});
    return;
 
@@ -40,3 +40,5 @@ router.post("/",async (req:Request,res:Response) => {
 });
 
 export default router;
+
+/* email: user.email */

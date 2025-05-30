@@ -4,7 +4,7 @@ import verifyToken from "../middlewares/authentication";
 
 const router = Router();
 
-router.get("/", verifyToken , async (req:Request,res:Response):Promise<void> => {
+router.get("/",async (req:Request,res:Response):Promise<void> => {
   const data = await CountryRepo.getAllFlags();
   res.status(200).send(data);  
 });
