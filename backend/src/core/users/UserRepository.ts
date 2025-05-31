@@ -6,7 +6,7 @@ import path from "path";
 
 export default class UserRepository{ 
   private usersPath = path.join(__dirname,"users.json");
-  private samplePath = path.join(__dirname, "users.sample.json");
+  private samplePath = path.join(__dirname, "users.sample.json"); // testfile.
 
   private async loadUsers():Promise<User[]>{
     try {
