@@ -46,15 +46,10 @@ export default class UserRepository{
   async loginIsCorrect(email:string,plainPassword:string):Promise<boolean>{
     const users = await this.loadUsers();
     const user = users.find(user => user.email === email);
-     
-     console.log("🟡 Attempt login for:", email);
+
     if (!user){
-      console.log("🔴 No user found for email:", email);
       return false;
     }
-    console.log("🔐 Input password:", plainPassword);
-   console.log("🔐 Stored hash:", user.password);
-
    const result = await Senha.comparePassword(plainPassword,user.password);
     console.log("✅ Password match result:", result);
      return result;
