@@ -47,7 +47,7 @@ backend/.env
 **/*.env
 
 #ignore the users.json file from backend.
-backend/src/core/users/users.json
+#backend/src/core/users/users.json
 
 
 # vercel

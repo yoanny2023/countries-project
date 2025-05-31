@@ -3,6 +3,6 @@
     "id": "sample-id-1",
     "name": "john_doe",
     "email": "john@example.com",
-    "password": "17406e11c3af2ba6ebb2bc008b892892b73fc3e260eb6ef202794a8e507d0c1e"
+    "password": "$2b$10$7vNuv9U7/Yev7b19cBFuTeQlYAhPjoZJ0sR3anMtc/Td54ZhUeh6a"
   }
 ]
